@@ -1,11 +1,920 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const person = {
+	name: 'Your Name',
+	role: 'Full-Stack Developer',
+	tagline: 'Building resilient products with ATS-friendly clarity and a human-first UI.',
+	location: 'Jakarta, Indonesia',
+	email: 'you@example.com',
+	phone: '+62 812-3456-7890',
+	website: 'https://byhaqi.my.id',
+	linkedin: 'https://www.linkedin.com/in/your-linkedin-id/',
+	github: 'https://github.com/your-github-id',
+	linkedinPhoto: '/profile/linkedin-photo.svg',
+	githubPhoto: '/profile/github-photo.svg',
+};
+
+const skillGroups = [
+	{
+		label: 'Languages',
+		items: ['TypeScript', 'JavaScript', 'Go', 'SQL'],
+	},
+	{
+		label: 'Frameworks',
+		items: ['Astro', 'React', 'Node.js', 'Tailwind CSS'],
+	},
+	{
+		label: 'Platform',
+		items: ['Cloudflare', 'Docker', 'CI/CD', 'Observability'],
+	},
+];
+
+const experience = [
+	{
+		period: '2023 - Present',
+		role: 'Senior Product Engineer',
+		company: 'Example Labs',
+		tags: ['engineering', 'product'],
+		bullets: [
+			'Delivered ATS-compliant resume parsing workflows that improved candidate matching speed by 38%.',
+			'Led cross-functional sprint planning across product, design, and engineering for six releases.',
+			'Built real-time observability dashboards to reduce incident response from 45 to 12 minutes.',
+		],
+		details: [
+			'Stack: Astro, TypeScript, PostgreSQL, Cloudflare Workers.',
+			'Owned architecture decisions and release quality gates.',
+		],
+	},
+	{
+		period: '2021 - 2023',
+		role: 'Software Engineer',
+		company: 'Nexa Digital',
+		tags: ['engineering', 'operations'],
+		bullets: [
+			'Implemented hiring analytics pipelines covering 1.2M records with nightly data quality checks.',
+			'Reduced API latency by 46% through schema tuning and distributed cache strategy.',
+			'Created reusable internal templates for ATS-ready CV exports and profile snapshots.',
+		],
+		details: [
+			'Focused on reliability, performance, and secure data handling.',
+			'Coached junior engineers through paired implementation sessions.',
+		],
+	},
+	{
+		period: '2019 - 2021',
+		role: 'Frontend Developer',
+		company: 'Studio Meridian',
+		tags: ['product', 'design'],
+		bullets: [
+			'Shipped interactive career pages that improved profile completion conversion by 22%.',
+			'Partnered with recruiters to translate ATS constraints into clear UI language.',
+			'Established component standards for accessible forms and semantic content structure.',
+		],
+		details: [
+			'Specialized in CSS architecture, component systems, and interaction design.',
+			'Maintained design QA across mobile and desktop breakpoints.',
+		],
+	},
+];
+
+const projects = [
+	{
+		name: 'ATS Resume Builder',
+		description:
+			'Interactive resume editor that validates section structure, keyword density, and machine-readable formatting.',
+		tags: ['engineering', 'product'],
+		link: 'https://github.com/your-github-id/ats-resume-builder',
+	},
+	{
+		name: 'Candidate Signals Dashboard',
+		description:
+			'Visualized pipeline bottlenecks and response-time trends for recruiter and hiring manager workflows.',
+		tags: ['operations', 'product'],
+		link: 'https://github.com/your-github-id/candidate-signals',
+	},
+	{
+		name: 'Portfolio Runtime Kit',
+		description:
+			'Reusable Astro starter with folded-hero patterns, animation tokens, and semantic CV blocks.',
+		tags: ['engineering', 'design'],
+		link: 'https://github.com/your-github-id/portfolio-runtime-kit',
+	},
+];
+
+const education = [
+	'B.Sc. in Computer Science - Example University',
+	'Certified Kubernetes Application Developer (CKAD)',
+	'AWS Certified Cloud Practitioner',
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title={`${person.name} | ATS CV`}
+	description="Interactive personal website with a full-screen hero that folds into an ATS-style CV header."
+>
+	<div class="ambient" aria-hidden="true"></div>
+
+	<header class="fold-header" aria-label="Folded ATS header">
+		<div class="fold-header__inner">
+			<div class="fold-header__identity">
+				<p>ATS HEADER</p>
+				<h2>{person.name}</h2>
+				<span>{person.role}</span>
+			</div>
+			<ul class="fold-header__meta">
+				<li>{person.location}</li>
+				<li>{person.phone}</li>
+				<li><a href={`mailto:${person.email}`}>{person.email}</a></li>
+			</ul>
+			<a id="activeProfileLinkHeader" href={person.linkedin} target="_blank" rel="noreferrer noopener">
+				<img id="headerProfileImage" src={person.linkedinPhoto} alt={`${person.name} profile`} />
+			</a>
+		</div>
+	</header>
+
+	<main>
+		<section class="hero" id="hero">
+			<article class="hero-card" id="heroCard">
+				<div class="hero-content">
+					<p class="hero-kicker">Personal Website / ATS CV Theme</p>
+					<h1>{person.name}</h1>
+					<p class="hero-role">{person.role}</p>
+					<p class="hero-tagline">{person.tagline}</p>
+					<ul class="hero-contact">
+						<li>
+							<span>Location</span>
+							<strong>{person.location}</strong>
+						</li>
+						<li>
+							<span>Email</span>
+							<a href={`mailto:${person.email}`}>{person.email}</a>
+						</li>
+						<li>
+							<span>Phone</span>
+							<strong>{person.phone}</strong>
+						</li>
+						<li>
+							<span>Website</span>
+							<a href={person.website} target="_blank" rel="noreferrer noopener">{person.website}</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="hero-profile-panel">
+					<button
+						type="button"
+						class="avatar-toggle"
+						id="avatarToggle"
+						aria-label="Toggle profile picture source"
+					>
+						<img
+							id="heroProfileImage"
+							src={person.linkedinPhoto}
+							alt={`${person.name} profile from LinkedIn`}
+							data-linkedin-src={person.linkedinPhoto}
+							data-github-src={person.githubPhoto}
+							data-linkedin-link={person.linkedin}
+							data-github-link={person.github}
+							data-person-name={person.name}
+						/>
+						<span id="avatarStateBadge">LinkedIn photo</span>
+						<span id="avatarActionHint">Click to switch to GitHub avatar</span>
+					</button>
+					<a
+						id="activeProfileLinkHero"
+						class="profile-link"
+						href={person.linkedin}
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						Open active profile
+					</a>
+					<p class="setup-note">
+						Replace placeholder files in /public/profile with your real LinkedIn and GitHub profile
+						photos.
+					</p>
+				</div>
+			</article>
+			<p class="scroll-note">Scroll down to fold this hero into a compact ATS header.</p>
+		</section>
+
+		<section class="cv" id="cv">
+			<div class="cv-shell">
+				<header class="cv-toolbar">
+					<div>
+						<p class="cv-eyebrow">Curriculum Vitae</p>
+						<h2>Interactive ATS-friendly resume content</h2>
+					</div>
+					<div class="focus-bar" role="toolbar" aria-label="Filter resume highlights">
+						<button type="button" class="focus-chip is-active" data-focus-chip="all">All</button>
+						<button type="button" class="focus-chip" data-focus-chip="engineering">Engineering</button>
+						<button type="button" class="focus-chip" data-focus-chip="product">Product</button>
+						<button type="button" class="focus-chip" data-focus-chip="operations">Operations</button>
+						<button type="button" class="focus-chip" data-focus-chip="design">Design</button>
+					</div>
+				</header>
+
+				<section class="cv-section">
+					<h3>Professional Summary</h3>
+					<p>
+						Product-minded engineer with 6+ years delivering web experiences that remain human-readable
+						while meeting ATS parsing requirements. I specialize in clean information architecture,
+						performance, and resilient deployment workflows.
+					</p>
+				</section>
+
+				<section class="cv-section">
+					<h3>Core Skills</h3>
+					<div class="skill-grid">
+						{
+							skillGroups.map((group) => (
+								<article class="skill-card">
+									<h4>{group.label}</h4>
+									<ul>
+										{group.items.map((item) => (
+											<li>{item}</li>
+										))}
+									</ul>
+								</article>
+							))
+						}
+					</div>
+				</section>
+
+				<section class="cv-section">
+					<h3>Work Experience</h3>
+					<div class="experience-grid">
+						{
+							experience.map((job) => (
+								<article class="experience-card focus-target" data-focus-item={job.tags.join(' ')}>
+									<p class="period">{job.period}</p>
+									<h4>{job.role}</h4>
+									<p class="company">{job.company}</p>
+									<ul>
+										{job.bullets.map((bullet) => (
+											<li>{bullet}</li>
+										))}
+									</ul>
+									<details>
+										<summary>Impact details</summary>
+										<ul>
+											{job.details.map((detail) => (
+												<li>{detail}</li>
+											))}
+										</ul>
+									</details>
+								</article>
+							))
+						}
+					</div>
+				</section>
+
+				<section class="cv-section">
+					<h3>Selected Projects</h3>
+					<div class="project-grid">
+						{
+							projects.map((project) => (
+								<article class="project-card focus-target" data-focus-item={project.tags.join(' ')}>
+									<h4>{project.name}</h4>
+									<p>{project.description}</p>
+									<a href={project.link} target="_blank" rel="noreferrer noopener">
+										View repository
+									</a>
+								</article>
+							))
+						}
+					</div>
+				</section>
+
+				<section class="cv-section">
+					<h3>Education & Certifications</h3>
+					<ul class="edu-list">
+						{education.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				</section>
+			</div>
+		</section>
+	</main>
 </Layout>
+
+<script is:inline>
+	const root = document.documentElement;
+	const heroImage = document.getElementById('heroProfileImage');
+	const headerImage = document.getElementById('headerProfileImage');
+	const avatarToggle = document.getElementById('avatarToggle');
+	const badge = document.getElementById('avatarStateBadge');
+	const hint = document.getElementById('avatarActionHint');
+	const heroProfileLink = document.getElementById('activeProfileLinkHero');
+	const headerProfileLink = document.getElementById('activeProfileLinkHeader');
+
+	if (heroImage && avatarToggle) {
+		const profileSources = {
+			linkedin: {
+				label: 'LinkedIn photo',
+				src: heroImage.getAttribute('data-linkedin-src') ?? heroImage.getAttribute('src') ?? '',
+				link: heroImage.getAttribute('data-linkedin-link') ?? '#',
+			},
+			github: {
+				label: 'GitHub avatar',
+				src: heroImage.getAttribute('data-github-src') ?? heroImage.getAttribute('src') ?? '',
+				link: heroImage.getAttribute('data-github-link') ?? '#',
+			},
+		};
+
+		let activeSource = Math.random() < 0.5 ? 'linkedin' : 'github';
+
+		const renderAvatarState = () => {
+			const selected = profileSources[activeSource];
+			const personName = heroImage.getAttribute('data-person-name') ?? 'Profile owner';
+			const altText = `${selected.label} of ${personName}`;
+
+			heroImage.setAttribute('src', selected.src);
+			heroImage.setAttribute('alt', altText);
+			if (headerImage) {
+				headerImage.setAttribute('src', selected.src);
+				headerImage.setAttribute('alt', altText);
+			}
+
+			if (heroProfileLink) {
+				heroProfileLink.setAttribute('href', selected.link);
+			}
+			if (headerProfileLink) {
+				headerProfileLink.setAttribute('href', selected.link);
+			}
+
+			if (badge) {
+				badge.textContent = selected.label;
+			}
+			if (hint) {
+				hint.textContent =
+					activeSource === 'linkedin'
+						? 'Click to switch to GitHub avatar'
+						: 'Click to switch to LinkedIn photo';
+			}
+
+			avatarToggle.setAttribute(
+				'aria-label',
+				activeSource === 'linkedin'
+					? 'Current image from LinkedIn. Click to show GitHub avatar.'
+					: 'Current image from GitHub. Click to show LinkedIn photo.'
+			);
+		};
+
+		avatarToggle.addEventListener('click', () => {
+			activeSource = activeSource === 'linkedin' ? 'github' : 'linkedin';
+			renderAvatarState();
+		});
+
+		renderAvatarState();
+	}
+
+	const updateFoldProgress = () => {
+		const foldRange = Math.max(window.innerHeight * 0.9, 1);
+		const progress = Math.min(window.scrollY / foldRange, 1);
+		root.style.setProperty('--fold-progress', progress.toFixed(4));
+		root.classList.toggle('is-folded', progress > 0.72);
+	};
+
+	updateFoldProgress();
+	window.addEventListener('scroll', updateFoldProgress, { passive: true });
+	window.addEventListener('resize', updateFoldProgress);
+
+	const focusChips = Array.from(document.querySelectorAll('[data-focus-chip]'));
+	const focusTargets = Array.from(document.querySelectorAll('[data-focus-item]'));
+
+	const setFocus = (focus) => {
+		focusTargets.forEach((target) => {
+			const tags = (target.getAttribute('data-focus-item') ?? '').split(' ').filter(Boolean);
+			const isVisible = focus === 'all' || tags.includes(focus);
+			target.classList.toggle('is-muted', !isVisible);
+		});
+
+		focusChips.forEach((chip) => {
+			chip.classList.toggle('is-active', chip.getAttribute('data-focus-chip') === focus);
+		});
+	};
+
+	focusChips.forEach((chip) => {
+		chip.addEventListener('click', () => {
+			setFocus(chip.getAttribute('data-focus-chip') ?? 'all');
+		});
+	});
+</script>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+	:global(:root) {
+		--ink: #1d2730;
+		--ink-soft: #475969;
+		--paper: #f7f0e2;
+		--paper-strong: #fefaf1;
+		--accent: #177e89;
+		--accent-warm: #d26a39;
+		--line: rgba(29, 39, 48, 0.16);
+		--shadow: 0 24px 70px rgba(18, 23, 28, 0.2);
+		--fold-progress: 0;
+	}
+
+	:global(*) {
+		box-sizing: border-box;
+	}
+
+	:global(body) {
+		font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+		color: var(--ink);
+		background: #efe7d9;
+	}
+
+	.ambient {
+		position: fixed;
+		inset: 0;
+		z-index: -2;
+		background:
+			radial-gradient(circle at 15% 20%, rgba(23, 126, 137, 0.35), transparent 55%),
+			radial-gradient(circle at 85% 15%, rgba(210, 106, 57, 0.28), transparent 48%),
+			linear-gradient(165deg, #f3e9d4 0%, #e9dfcf 42%, #ede5d7 100%);
+	}
+
+	.fold-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 50;
+		transform: translateY(calc(-108% + (var(--fold-progress) * 108%)));
+		opacity: clamp(0, calc((var(--fold-progress) * 1.4) - 0.08), 1);
+		pointer-events: none;
+		transition: box-shadow 200ms ease;
+	}
+
+	:global(:root.is-folded) .fold-header {
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+	}
+
+	.fold-header__inner {
+		max-width: 1120px;
+		margin: 0 auto;
+		padding: 0.75rem 1.1rem;
+		display: grid;
+		grid-template-columns: 1fr auto auto;
+		gap: 1rem;
+		align-items: center;
+		background: rgba(255, 250, 240, 0.95);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(29, 39, 48, 0.13);
+		border-top: 0;
+		border-radius: 0 0 16px 16px;
+		pointer-events: auto;
+	}
+
+	.fold-header__identity p {
+		margin: 0;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	.fold-header__identity h2 {
+		margin: 0.15rem 0 0;
+		font-size: 1.12rem;
+	}
+
+	.fold-header__identity span {
+		color: var(--ink-soft);
+		font-size: 0.87rem;
+	}
+
+	.fold-header__meta {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 0.2rem;
+		font-size: 0.83rem;
+		color: var(--ink-soft);
+	}
+
+	.fold-header__meta a {
+		color: inherit;
+		text-decoration-thickness: 1px;
+	}
+
+	.fold-header__inner img {
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		border: 2px solid rgba(23, 126, 137, 0.55);
+		object-fit: cover;
+	}
+
+	main {
+		position: relative;
+		z-index: 4;
+	}
+
+	.hero {
+		min-height: 100svh;
+		padding: clamp(1.2rem, 4vw, 2.8rem) 1rem 1.5rem;
+		display: grid;
+		align-content: center;
+		gap: 1rem;
+	}
+
+	.hero-card {
+		max-width: 1120px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+		gap: clamp(1rem, 4vw, 2.6rem);
+		padding: clamp(1.2rem, 3vw, 2.1rem);
+		border-radius: 30px;
+		border: 1px solid rgba(29, 39, 48, 0.14);
+		background:
+			linear-gradient(145deg, rgba(254, 250, 241, 0.96), rgba(247, 239, 226, 0.9)) padding-box,
+			linear-gradient(135deg, rgba(23, 126, 137, 0.3), rgba(210, 106, 57, 0.3)) border-box;
+		box-shadow: var(--shadow);
+		transform: translateY(calc(var(--fold-progress) * -24vh))
+			scale(calc(1 - (var(--fold-progress) * 0.12)));
+		transform-origin: center top;
+		opacity: calc(1 - (var(--fold-progress) * 0.24));
+		transition: box-shadow 240ms ease;
+	}
+
+	.hero-content h1 {
+		margin: 0;
+		font-size: clamp(2rem, 6vw, 4.1rem);
+		line-height: 1;
+		letter-spacing: -0.03em;
+	}
+
+	.hero-kicker {
+		margin: 0 0 0.6rem;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.78rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	.hero-role {
+		margin: 0.4rem 0 0;
+		font-size: clamp(1rem, 2vw, 1.45rem);
+		font-weight: 500;
+		color: var(--ink-soft);
+	}
+
+	.hero-tagline {
+		margin: 1rem 0 1.4rem;
+		max-width: 62ch;
+		line-height: 1.65;
+		font-size: 1.02rem;
+	}
+
+	.hero-contact {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.9rem;
+	}
+
+	.hero-contact li {
+		padding: 0.85rem;
+		border-radius: 12px;
+		border: 1px solid var(--line);
+		background: rgba(255, 255, 255, 0.54);
+		display: grid;
+		gap: 0.2rem;
+	}
+
+	.hero-contact span {
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.74rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--ink-soft);
+	}
+
+	.hero-contact a,
+	.hero-contact strong {
+		font-size: 0.95rem;
+		font-weight: 500;
+		color: var(--ink);
+		word-break: break-word;
+	}
+
+	.hero-profile-panel {
+		display: grid;
+		align-content: start;
+		gap: 0.85rem;
+	}
+
+	.avatar-toggle {
+		all: unset;
+		cursor: pointer;
+		display: grid;
+		justify-items: center;
+		gap: 0.5rem;
+		padding: 1rem;
+		border-radius: 20px;
+		border: 1px solid var(--line);
+		background: rgba(255, 255, 255, 0.6);
+		transition: transform 220ms ease;
+	}
+
+	.avatar-toggle:hover {
+		transform: translateY(-2px);
+	}
+
+	.avatar-toggle img {
+		width: min(100%, 260px);
+		aspect-ratio: 1;
+		object-fit: cover;
+		border-radius: 24px;
+		border: 2px solid rgba(23, 126, 137, 0.45);
+	}
+
+	#avatarStateBadge {
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.78rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #0e5960;
+	}
+
+	#avatarActionHint {
+		font-size: 0.9rem;
+		color: var(--ink-soft);
+	}
+
+	.profile-link {
+		display: inline-flex;
+		justify-content: center;
+		padding: 0.7rem 1rem;
+		border-radius: 999px;
+		background: var(--ink);
+		color: #fff;
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.setup-note {
+		margin: 0;
+		font-size: 0.86rem;
+		line-height: 1.5;
+		color: var(--ink-soft);
+	}
+
+	.scroll-note {
+		max-width: 1120px;
+		margin: 0 auto;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.78rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ink-soft);
+	}
+
+	.cv {
+		padding: 1rem 1rem 4rem;
+	}
+
+	.cv-shell {
+		max-width: 1120px;
+		margin: 0 auto;
+		padding: clamp(1.1rem, 2.4vw, 2.3rem);
+		border-radius: 24px;
+		background: rgba(255, 250, 240, 0.88);
+		border: 1px solid rgba(29, 39, 48, 0.14);
+		backdrop-filter: blur(9px);
+		box-shadow: 0 16px 44px rgba(18, 23, 28, 0.13);
+	}
+
+	.cv-toolbar {
+		display: grid;
+		gap: 0.9rem;
+		border-bottom: 1px solid var(--line);
+		padding-bottom: 1rem;
+	}
+
+	.cv-eyebrow {
+		margin: 0;
+		font-family: 'IBM Plex Mono', monospace;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		font-size: 0.78rem;
+		color: var(--accent);
+	}
+
+	.cv-toolbar h2 {
+		margin: 0.3rem 0 0;
+		font-size: clamp(1.25rem, 2.1vw, 1.8rem);
+	}
+
+	.focus-bar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.focus-chip {
+		border: 1px solid rgba(29, 39, 48, 0.28);
+		background: transparent;
+		padding: 0.48rem 0.8rem;
+		border-radius: 999px;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.74rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		cursor: pointer;
+		color: var(--ink);
+	}
+
+	.focus-chip.is-active {
+		background: var(--ink);
+		color: white;
+		border-color: var(--ink);
+	}
+
+	.cv-section {
+		padding-top: 1.2rem;
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.cv-section h3 {
+		margin: 0;
+		font-size: 1.05rem;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		font-family: 'IBM Plex Mono', monospace;
+	}
+
+	.cv-section > p {
+		margin: 0;
+		line-height: 1.7;
+		color: var(--ink-soft);
+	}
+
+	.skill-grid,
+	.experience-grid,
+	.project-grid {
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.skill-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.skill-card,
+	.experience-card,
+	.project-card {
+		padding: 0.95rem;
+		border: 1px solid var(--line);
+		border-radius: 14px;
+		background: var(--paper-strong);
+		transition:
+			opacity 160ms ease,
+			transform 160ms ease,
+			border-color 160ms ease;
+	}
+
+	.skill-card h4,
+	.experience-card h4,
+	.project-card h4 {
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	.skill-card ul,
+	.experience-card ul,
+	.edu-list {
+		margin: 0.65rem 0 0;
+		padding-left: 1.1rem;
+		display: grid;
+		gap: 0.4rem;
+		line-height: 1.45;
+		color: var(--ink-soft);
+	}
+
+	.experience-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.period {
+		margin: 0;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent-warm);
+	}
+
+	.company {
+		margin: 0.35rem 0 0;
+		font-weight: 500;
+		color: var(--ink-soft);
+	}
+
+	details {
+		margin-top: 0.7rem;
+		border-top: 1px dashed rgba(29, 39, 48, 0.2);
+		padding-top: 0.5rem;
+	}
+
+	summary {
+		cursor: pointer;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.76rem;
+		text-transform: uppercase;
+		letter-spacing: 0.09em;
+		color: var(--accent);
+	}
+
+	.project-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.project-card p {
+		margin: 0.55rem 0 0;
+		line-height: 1.55;
+		color: var(--ink-soft);
+	}
+
+	.project-card a {
+		display: inline-flex;
+		margin-top: 0.75rem;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.76rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--accent);
+	}
+
+	.focus-target.is-muted {
+		opacity: 0.34;
+		transform: scale(0.985);
+		border-color: rgba(29, 39, 48, 0.09);
+	}
+
+	.edu-list {
+		padding-left: 1rem;
+	}
+
+	@media (max-width: 980px) {
+		.fold-header__inner {
+			grid-template-columns: 1fr auto;
+		}
+
+		.fold-header__meta {
+			display: none;
+		}
+
+		.hero-card {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-profile-panel {
+			grid-template-columns: 1fr;
+		}
+
+		.skill-grid,
+		.experience-grid,
+		.project-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.hero {
+			min-height: 100svh;
+			padding-top: 0.9rem;
+		}
+
+		.hero-contact {
+			grid-template-columns: 1fr;
+		}
+
+		.fold-header__inner {
+			border-radius: 0;
+		}
+
+		.skill-grid,
+		.experience-grid,
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.avatar-toggle img {
+			max-width: 220px;
+		}
+	}
+</style>

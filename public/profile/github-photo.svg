@@ -1,0 +1,14 @@
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">GitHub profile placeholder</title>
+  <desc id="desc">Replace this file with your real GitHub profile image.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14181F" />
+      <stop offset="100%" stop-color="#2D3645" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" rx="48" fill="url(#bg)" />
+  <circle cx="320" cy="250" r="115" fill="#F4F8FF" />
+  <path d="M142 518c30-86 101-128 178-128s148 42 178 128" fill="#F4F8FF" />
+  <text x="320" y="592" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#F4F8FF">GitHub Avatar</text>
+</svg>

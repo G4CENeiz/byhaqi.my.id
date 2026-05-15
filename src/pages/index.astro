@@ -11,101 +11,80 @@ const person = {
 	website: 'https://byhaqi.my.id',
 	linkedin: 'https://www.linkedin.com/in/baihaqiasyari',
 	github: 'https://github.com/G4CENeiz',
-	linkedinPhoto: 'https://media.licdn.com/dms/image/v2/D5603AQEcfHqP8G_QnQ/profile-displayphoto-crop_800_800/B56ZtT3bHGHYAI-/0/1766638597119?e=1777507200&v=beta&t=1KYDdZIio00BvrGtQL55SzqCT43xMWFYvc4Hq3fn6N0',
+	linkedinPhoto: 'https://media.licdn.com/dms/image/v2/D5603AQEcfHqP8G_QnQ/profile-displayphoto-crop_800_800/B56ZtT3bHGHYAI-/0/1766638597119?e=1780531200&v=beta&t=MJsBhIjdqukRYOoeJy2zEb80_tjWnbUR5UQqqHR9oug',
 	githubPhoto: 'https://avatars.githubusercontent.com/u/116696555',
 };
 
 const skillGroups = [
 	{
-		label: 'Languages',
-		items: ['TypeScript', 'JavaScript', 'Go', 'SQL'],
+		label: 'Programming Languages',
+		items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'PHP', 'Java', 'Python', 'Dart'],
 	},
 	{
 		label: 'Frameworks',
-		items: ['Astro', 'React', 'Node.js', 'Tailwind CSS'],
+		items: ['Laravel', 'React', 'Tailwind CSS', 'Flutter', 'Astro', 'Hono'],
 	},
 	{
-		label: 'Platform',
-		items: ['Cloudflare', 'Docker', 'CI/CD', 'Observability'],
+		label: 'Technologies',
+		items: ['Git', 'Docker', 'Typst'],
+	},
+	{
+		label: 'Interests',
+		items: ['Automotive', 'Minecraft'],
+	},
+	{
+		label: 'Languages',
+		items: ['Indonesian (Native)', 'English (C2)'],
 	},
 ];
 
 const experience = [
 	{
-		period: '2023 - Present',
-		role: 'Senior Product Engineer',
-		company: 'Example Labs',
-		tags: ['engineering', 'product'],
+		period: 'Oct 2022 - Jan 2025',
+		role: 'Workshop Riset Informatika',
+		company: 'Politeknik Negeri Malang',
+		tags: ['community'],
 		bullets: [
-			'Delivered ATS-compliant resume parsing workflows that improved candidate matching speed by 38%.',
-			'Led cross-functional sprint planning across product, design, and engineering for six releases.',
-			'Built real-time observability dashboards to reduce incident response from 45 to 12 minutes.',
+			'Led instructional sessions for members in a Beta Testing Program.',
+			'Oversaw procurement and resource management for the community.',
+			'Facilitated partnerships with campus institutions for collaboration and joint initiatives.',
+			'Identified potential business opportunities through inter-institutional connections.',
+			'Coordinated joint projects with partnering organizations.',
 		],
-		details: [
-			'Stack: Astro, TypeScript, PostgreSQL, Cloudflare Workers.',
-			'Owned architecture decisions and release quality gates.',
-		],
-	},
-	{
-		period: '2021 - 2023',
-		role: 'Software Engineer',
-		company: 'Nexa Digital',
-		tags: ['engineering', 'operations'],
-		bullets: [
-			'Implemented hiring analytics pipelines covering 1.2M records with nightly data quality checks.',
-			'Reduced API latency by 46% through schema tuning and distributed cache strategy.',
-			'Created reusable internal templates for ATS-ready CV exports and profile snapshots.',
-		],
-		details: [
-			'Focused on reliability, performance, and secure data handling.',
-			'Coached junior engineers through paired implementation sessions.',
-		],
-	},
-	{
-		period: '2019 - 2021',
-		role: 'Frontend Developer',
-		company: 'Studio Meridian',
-		tags: ['product', 'design'],
-		bullets: [
-			'Shipped interactive career pages that improved profile completion conversion by 22%.',
-			'Partnered with recruiters to translate ATS constraints into clear UI language.',
-			'Established component standards for accessible forms and semantic content structure.',
-		],
-		details: [
-			'Specialized in CSS architecture, component systems, and interaction design.',
-			'Maintained design QA across mobile and desktop breakpoints.',
-		],
+		details: [],
 	},
 ];
 
 const projects = [
 	{
-		name: 'ATS Resume Builder',
+		name: 'Dolla',
 		description:
-			'Interactive resume editor that validates section structure, keyword density, and machine-readable formatting.',
-		tags: ['engineering', 'product'],
-		link: 'https://github.com/your-github-id/ats-resume-builder',
+			'Monorepo for an autonomous crypto DCA strategy. Stack: Turborepo, Vite React, React Native, Hono.',
+		dates: 'Apr 2026 - Present',
+		tags: ['projects'],
+		link: 'https://github.com/G4CENeiz/Dolla',
 	},
 	{
-		name: 'Candidate Signals Dashboard',
-		description:
-			'Visualized pipeline bottlenecks and response-time trends for recruiter and hiring manager workflows.',
-		tags: ['operations', 'product'],
-		link: 'https://github.com/your-github-id/candidate-signals',
+		name: 'FaMiSo',
+		description: 'Fleet Management System based on Traccar. Stack: Laravel, Filament.',
+		dates: 'Mar 2026 - Present',
+		tags: ['projects'],
+		link: 'https://github.com/G4CENeiz/FaMiSo',
 	},
 	{
-		name: 'Portfolio Runtime Kit',
+		name: 'RW 1 Information System',
 		description:
-			'Reusable Astro starter with folded-hero patterns, animation tokens, and semantic CV blocks.',
-		tags: ['engineering', 'design'],
-		link: 'https://github.com/your-github-id/portfolio-runtime-kit',
+			'Requirements gathering and delivery of a decision-support web app for government grants. Stack: Laravel, MySQL.',
+		dates: 'Aug 2023 - Nov 2023',
+		tags: ['projects'],
+		link: 'https://github.com/integer-class/rwis-png',
 	},
 ];
 
 const education = [
-	'B.Sc. in Computer Science - Example University',
-	'Certified Kubernetes Application Developer (CKAD)',
-	'AWS Certified Cloud Practitioner',
+	'Politeknik Negeri Malang — B.A.Sc. Informatics Engineering (Aug 2022 - 2026)',
+	'Cumulative GPA: 3.62/4.0',
+	'Member of Workshop Riset Informatika',
 ];
 ---
 
@@ -190,6 +169,14 @@ const education = [
 					>
 						Open active profile
 					</a>
+					<a
+						class="download-link"
+						href="/cv.pdf"
+						download
+						aria-label="Download CV as PDF"
+					>
+						Download CV (PDF)
+					</a>
 					<!-- <p class="setup-note">
 						Replace placeholder files in /public/profile with your real LinkedIn and GitHub profile
 						photos.
@@ -208,19 +195,22 @@ const education = [
 					</div>
 					<div class="focus-bar" role="toolbar" aria-label="Filter resume highlights">
 						<button type="button" class="focus-chip is-active" data-focus-chip="all">All</button>
-						<button type="button" class="focus-chip" data-focus-chip="engineering">Engineering</button>
-						<button type="button" class="focus-chip" data-focus-chip="product">Product</button>
-						<button type="button" class="focus-chip" data-focus-chip="operations">Operations</button>
-						<button type="button" class="focus-chip" data-focus-chip="design">Design</button>
+						<button type="button" class="focus-chip" data-focus-chip="projects">Projects</button>
+						<button type="button" class="focus-chip" data-focus-chip="community">Community</button>
+					</div>
+					<div class="cv-actions">
+						<a class="download-link download-link--outline" href="/cv.pdf" download>
+							Download CV (PDF)
+						</a>
 					</div>
 				</header>
 
 				<section class="cv-section">
 					<h3>Professional Summary</h3>
 					<p>
-						Product-minded engineer with 6+ years delivering web experiences that remain human-readable
-						while meeting ATS parsing requirements. I specialize in clean information architecture,
-						performance, and resilient deployment workflows.
+						Backend developer and aspiring DevOps engineer focused on reliable systems, automation,
+						and clear delivery. Experienced in Laravel, Hono, and practical tooling for web and
+						mobile workflows.
 					</p>
 				</section>
 
@@ -243,7 +233,7 @@ const education = [
 				</section>
 
 				<section class="cv-section">
-					<h3>Work Experience</h3>
+					<h3>Experience & Activities</h3>
 					<div class="experience-grid">
 						{
 							experience.map((job) => (
@@ -256,14 +246,16 @@ const education = [
 											<li>{bullet}</li>
 										))}
 									</ul>
-									<details>
-										<summary>Impact details</summary>
-										<ul>
-											{job.details.map((detail) => (
-												<li>{detail}</li>
-											))}
-										</ul>
-									</details>
+									{job.details && job.details.length > 0 && (
+										<details>
+											<summary>Impact details</summary>
+											<ul>
+												{job.details.map((detail) => (
+													<li>{detail}</li>
+												))}
+											</ul>
+										</details>
+									)}
 								</article>
 							))
 						}
@@ -276,6 +268,7 @@ const education = [
 						{
 							projects.map((project) => (
 								<article class="project-card focus-target" data-focus-item={project.tags.join(' ')}>
+									<p class="period">{project.dates}</p>
 									<h4>{project.name}</h4>
 									<p>{project.description}</p>
 									<a href={project.link} target="_blank" rel="noreferrer noopener">
@@ -665,6 +658,25 @@ const education = [
 		font-weight: 500;
 	}
 
+	.download-link {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0.7rem 1rem;
+		border-radius: 999px;
+		background: var(--accent);
+		color: #fff;
+		text-decoration: none;
+		font-weight: 600;
+		border: 1px solid transparent;
+	}
+
+	.download-link--outline {
+		background: transparent;
+		color: var(--accent);
+		border-color: rgba(23, 126, 137, 0.4);
+	}
+
 	.setup-note {
 		margin: 0;
 		font-size: 0.86rem;
@@ -702,6 +714,13 @@ const education = [
 		gap: 0.9rem;
 		border-bottom: 1px solid var(--line);
 		padding-bottom: 1rem;
+	}
+
+	.cv-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		align-items: center;
 	}
 
 	.cv-eyebrow {

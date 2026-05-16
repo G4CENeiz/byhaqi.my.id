@@ -7,7 +7,7 @@ const person = {
 	tagline: 'Aspiring Devops with background in Backend and soy bean farmer retirees.',
 	location: 'Malang, Indonesia',
 	email: 'contact@byhaqi.my.id',
-	phone: '+62 812-3456-7890',
+	phone: '+6282336750134',
 	website: 'https://byhaqi.my.id',
 	linkedin: 'https://www.linkedin.com/in/baihaqiasyari',
 	github: 'https://github.com/G4CENeiz',
@@ -103,7 +103,7 @@ const education = [
 			</div>
 			<ul class="fold-header__meta">
 				<li>{person.location}</li>
-				<li>{person.phone}</li>
+				<li><a href={`https://wa.me/${person.phone}`}>{person.phone}</a></li>
 				<li><a href={`mailto:${person.email}`}>{person.email}</a></li>
 			</ul>
 			<a id="activeProfileLinkHeader" href={person.linkedin} target="_blank" rel="noreferrer noopener">
@@ -131,7 +131,7 @@ const education = [
 						</li>
 						<li>
 							<span>Phone</span>
-							<strong>{person.phone}</strong>
+							<strong><a href={`https://wa.me/${person.phone}`}>{person.phone}</a></strong>
 						</li>
 						<li>
 							<span>Website</span>

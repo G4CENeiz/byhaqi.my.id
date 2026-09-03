@@ -1,8 +1,13 @@
 {
-  "compatibility_date": "2026-04-08",
-	"compatibility_flags": ["global_fetch_strictly_public"],
-  "name": "byhaqi-my-id",
+	"compatibility_date": "2026-04-08",
+	"compatibility_flags": [
+		"global_fetch_strictly_public"
+	],
+	"name": "byhaqi-my-id",
 	"main": "@astrojs/cloudflare/entrypoints/server",
+	"vars": {
+		"TURNSTILE_HOSTNAMES": "byhaqi.my.id"
+	},
 	"assets": {
 		"directory": "./dist",
 		"binding": "ASSETS"
@@ -19,5 +24,6 @@
 			"head_sampling_rate": 1,
 			"persist": true
 		}
-	}
+	},
+	"account_id": "32df0d95d72e5ac1e0108142e20e236d"
 }

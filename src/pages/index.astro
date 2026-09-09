@@ -32,10 +32,6 @@ const skillGroups = [
 		items: ['Git', 'GitHub Actions', 'Docker', 'Dokploy', 'Cloudflare Workers', 'Cloudflare D1', 'Cloudflare R2', 'Cloudflare Tunnel', 'Vite', 'Typst'],
 	},
 
-	{
-		label: 'Interests',
-		items: ['Automotive', 'Minecraft'],
-	},
 ];
 
 const experience = [
@@ -91,6 +87,8 @@ const education = [
 	'Cumulative GPA: 3.64/4.0',
 	'Member of Workshop Riset Informatika',
 ];
+
+const interests = ['Automotive', 'Minecraft'];
 ---
 
 <Layout
@@ -242,11 +240,13 @@ const education = [
 
 				<section class="cv-section">
 					<h3>Education</h3>
-					<ul class="edu-list">
-						{education.map((item) => (
-							<li>{item}</li>
-						))}
-					</ul>
+					<article class="info-card">
+						<ul class="edu-list">
+							{education.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</article>
 				</section>
 
 				<section class="cv-section">
@@ -286,13 +286,25 @@ const education = [
 						}
 					</div>
 				</section>
-
 				<section class="cv-section">
 					<h3>Languages</h3>
-					<ul class="edu-list">
-						<li>Indonesian — Native</li>
-						<li>English — <a href="https://cert.efset.org/en/GUr8wx" target="_blank" rel="noreferrer noopener">EF SET C1</a>, TOEIC 975/990</li>
-					</ul>
+					<article class="info-card">
+						<ul class="edu-list">
+							<li>Indonesian — Native</li>
+							<li>English — <a href="https://cert.efset.org/en/GUr8wx" target="_blank" rel="noreferrer noopener">EF SET C1</a>, TOEIC 975/990</li>
+						</ul>
+					</article>
+				</section>
+
+				<section class="cv-section">
+					<h3>Interests</h3>
+					<article class="info-card">
+						<ul class="edu-list">
+							{interests.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</article>
 				</section>
 
 			</div>
@@ -742,7 +754,8 @@ const education = [
 
 	.skill-card,
 	.experience-card,
-	.project-card {
+	.project-card,
+	.info-card {
 		padding: 0.95rem;
 		border: 1px solid var(--line);
 		border-radius: 14px;
@@ -772,7 +785,7 @@ const education = [
 	}
 
 	.experience-grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: 1fr;
 	}
 
 	.period {
@@ -799,7 +812,7 @@ const education = [
 	}
 
 	.project-grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: 1fr;
 	}
 
 	.project-card p {
@@ -839,9 +852,7 @@ const education = [
 			grid-template-columns: 1fr;
 		}
 
-		.skill-grid,
-		.experience-grid,
-		.project-grid {
+		.skill-grid {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
@@ -860,9 +871,7 @@ const education = [
 			border-radius: 0;
 		}
 
-		.skill-grid,
-		.experience-grid,
-		.project-grid {
+		.skill-grid {
 			grid-template-columns: 1fr;
 		}
 

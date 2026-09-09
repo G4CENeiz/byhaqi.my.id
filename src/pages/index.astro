@@ -84,11 +84,12 @@ const projects = [
 
 const education = [
 	{
-		school: 'Politeknik Negeri Malang',
-		location: 'Malang City, East Java',
-		degree: "Bachelor's of Applied Science, Informatics Engineering-Sarjana Terapan Teknik Informatika",
+		degree: "Bachelor's of Applied Science, Informatics Engineering",
 		period: 'Aug 2022 — 2026',
-		details: ['Cumulative GPA: 3.64/4.0', 'Member of Workshop Riset Informatika'],
+		school: 'Politeknik Negeri Malang',
+		gpa: '3.64/4.0',
+		location: 'Malang City, East Java',
+		details: ['Member of Workshop Riset Informatika'],
 	},
 ];
 
@@ -245,11 +246,16 @@ const interests = ['Automotive', 'Minecraft'];
 					<h3>Education</h3>
 					{education.map((edu) => (
 						<article class="info-card">
-							<h4>{edu.school}</h4>
-							<p class="company">{edu.location}</p>
-							<p class="edu-degree">
-								<em>{edu.degree}</em> <span class="period period--inline">{edu.period}</span>
-							</p>
+							<div class="edu-row">
+								<h4>{edu.degree}</h4>
+								<p class="period">{edu.period}</p>
+							</div>
+							<div class="edu-row">
+								<p>
+									{edu.school} | GPA: {edu.gpa}
+								</p>
+								<p>{edu.location}</p>
+							</div>
 							<ul class="edu-list">
 								{edu.details.map((detail) => (
 									<li>{detail}</li>
@@ -819,14 +825,20 @@ const interests = ['Automotive', 'Minecraft'];
 		color: var(--ink-soft);
 	}
 
-	.edu-degree {
-		margin: 0.35rem 0 0;
-		line-height: 1.55;
+	.edu-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+	}
+
+	.edu-row p {
+		margin: 0;
 		color: var(--ink-soft);
 	}
 
-	.period--inline {
-		display: inline;
+	.edu-row + .edu-row {
+		margin-top: 0.15rem;
 	}
 
 	.stack {

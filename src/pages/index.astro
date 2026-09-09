@@ -112,6 +112,13 @@ const interests = ['Automotive', 'Minecraft'];
 			<a id="activeProfileLinkHeader" href={person.linkedin} target="_blank" rel="noreferrer noopener">
 				<img id="headerProfileImage" src={person.linkedinPhoto} alt={`${person.name} profile`} />
 			</a>
+			<a
+				class="download-link download-link--compact"
+				href="/cv.pdf"
+				download
+			>
+				Download CV
+			</a>
 		</div>
 	</header>
 
@@ -191,14 +198,6 @@ const interests = ['Automotive', 'Minecraft'];
 
 		<section class="cv" id="cv">
 			<div class="cv-shell">
-				<header class="cv-toolbar">
-					<div class="cv-actions">
-						<a class="download-link download-link--outline" href="/cv.pdf" download>
-							Download CV (PDF)
-						</a>
-					</div>
-				</header>
-
 				<section class="cv-section">
 					<h3>Experience</h3>
 					<div class="experience-grid">
@@ -451,7 +450,7 @@ const interests = ['Automotive', 'Minecraft'];
 		margin: 0 auto;
 		padding: 0.75rem 1.1rem;
 		display: grid;
-		grid-template-columns: 1fr auto auto;
+		grid-template-columns: 1fr auto auto auto;
 		gap: 1rem;
 		align-items: center;
 		background: rgba(255, 250, 240, 0.95);
@@ -675,6 +674,12 @@ const interests = ['Automotive', 'Minecraft'];
 		border-color: rgba(23, 126, 137, 0.4);
 	}
 
+	.download-link--compact {
+		padding: 0.5rem 0.85rem;
+		font-size: 0.85rem;
+		white-space: nowrap;
+	}
+
 	.setup-note {
 		margin: 0;
 		font-size: 0.86rem;
@@ -705,20 +710,6 @@ const interests = ['Automotive', 'Minecraft'];
 		border: 1px solid rgba(29, 39, 48, 0.14);
 		backdrop-filter: blur(9px);
 		box-shadow: 0 16px 44px rgba(18, 23, 28, 0.13);
-	}
-
-	.cv-toolbar {
-		display: grid;
-		gap: 0.9rem;
-		border-bottom: 1px solid var(--line);
-		padding-bottom: 1rem;
-	}
-
-	.cv-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.6rem;
-		align-items: center;
 	}
 
 	.cv-section {
@@ -837,7 +828,7 @@ const interests = ['Automotive', 'Minecraft'];
 
 		@media (max-width: 980px) {
 		.fold-header__inner {
-			grid-template-columns: 1fr auto;
+			grid-template-columns: 1fr auto auto;
 		}
 
 		.fold-header__meta {

@@ -83,9 +83,13 @@ const projects = [
 ];
 
 const education = [
-	"Politeknik Negeri Malang — Bachelor's of Applied Science, Informatics Engineering (Aug 2022 - 2026)",
-	'Cumulative GPA: 3.64/4.0',
-	'Member of Workshop Riset Informatika',
+	{
+		school: 'Politeknik Negeri Malang',
+		location: 'Malang City, East Java',
+		degree: "Bachelor's of Applied Science, Informatics Engineering-Sarjana Terapan Teknik Informatika",
+		period: 'Aug 2022 — 2026',
+		details: ['Cumulative GPA: 3.64/4.0', 'Member of Workshop Riset Informatika'],
+	},
 ];
 
 const interests = ['Automotive', 'Minecraft'];
@@ -239,13 +243,20 @@ const interests = ['Automotive', 'Minecraft'];
 
 				<section class="cv-section">
 					<h3>Education</h3>
-					<article class="info-card">
-						<ul class="edu-list">
-							{education.map((item) => (
-								<li>{item}</li>
-							))}
-						</ul>
-					</article>
+					{education.map((edu) => (
+						<article class="info-card">
+							<h4>{edu.school}</h4>
+							<p class="company">{edu.location}</p>
+							<p class="edu-degree">
+								<em>{edu.degree}</em> <span class="period period--inline">{edu.period}</span>
+							</p>
+							<ul class="edu-list">
+								{edu.details.map((detail) => (
+									<li>{detail}</li>
+								))}
+							</ul>
+						</article>
+					))}
 				</section>
 
 				<section class="cv-section">
@@ -772,7 +783,8 @@ const interests = ['Automotive', 'Minecraft'];
 
 	.skill-card h4,
 	.experience-card h4,
-	.project-card h4 {
+	.project-card h4,
+	.info-card h4 {
 		margin: 0;
 		font-size: 1rem;
 	}
@@ -805,6 +817,16 @@ const interests = ['Automotive', 'Minecraft'];
 		margin: 0.35rem 0 0;
 		font-weight: 500;
 		color: var(--ink-soft);
+	}
+
+	.edu-degree {
+		margin: 0.35rem 0 0;
+		line-height: 1.55;
+		color: var(--ink-soft);
+	}
+
+	.period--inline {
+		display: inline;
 	}
 
 	.stack {

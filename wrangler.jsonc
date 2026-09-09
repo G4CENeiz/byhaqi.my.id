@@ -4,6 +4,7 @@
 		"global_fetch_strictly_public"
 	],
 	"name": "byhaqi-my-id",
+	"workers_dev": false,
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"vars": {
 		"TURNSTILE_HOSTNAMES": "byhaqi.my.id"
